@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>密码生成器 - 安全、智能、便捷</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-shield-alt"></i> 密码生成器</h1>
+            <p>创建安全、强大的密码保护您的账户</p>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
+
+        <main class="main-content">
+            <div class="password-section">
+                <div class="password-display">
+                    <input type="text" id="passwordOutput" class="password-input" placeholder="点击生成密码..." readonly>
+                    <div class="password-actions">
+                        <button class="action-btn" id="toggleVisibility" title="显示/隐藏密码">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        <button class="action-btn" id="copyPassword" title="复制密码">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                        <button class="action-btn" id="generateQR" title="生成二维码">
+                            <i class="fas fa-qrcode"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="strength-meter">
+                    <div class="strength-bar">
+                        <div class="strength-fill" id="strengthFill"></div>
+                    </div>
+                    <span class="strength-text" id="strengthText">密码强度</span>
+                </div>
+
+                <button class="generate-btn" id="generateBtn">
+                    <i class="fas fa-magic"></i> 生成密码
+                </button>
+            </div>
+
+            <div class="controls-section">
+                <div class="control-group">
+                    <label for="lengthSlider">密码长度: <span id="lengthValue">12</span></label>
+                    <input type="range" id="lengthSlider" min="4" max="128" value="12" class="slider">
+                </div>
+
+                <div class="control-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="includeUppercase" checked>
+                        <span class="checkmark"></span>
+                        包含大写字母 (A-Z)
+                    </label>
+                </div>
+
+                <div class="control-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="includeLowercase" checked>
+                        <span class="checkmark"></span>
+                        包含小写字母 (a-z)
+                    </label>
+                </div>
+
+                <div class="control-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="includeNumbers" checked>
+                        <span class="checkmark"></span>
+                        包含数字 (0-9)
+                    </label>
+                </div>
+
+                <div class="control-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="includeSymbols" checked>
+                        <span class="checkmark"></span>
+                        包含特殊符号 (!@#$%^&*)
+                    </label>
+                </div>
+
+                <div class="control-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="excludeSimilar">
+                        <span class="checkmark"></span>
+                        排除易混淆字符 (0oO1lI)
+                    </label>
+                </div>
+
+                <div class="control-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="excludeSequential">
+                        <span class="checkmark"></span>
+                        排除连续字符 (abc, 123)
+                    </label>
+                </div>
+            </div>
+
+            <div class="history-section">
+                <h3><i class="fas fa-history"></i> 生成历史</h3>
+                <div class="history-list" id="historyList">
+                    <p class="no-history">暂无生成记录</p>
+                </div>
+                <button class="clear-history-btn" id="clearHistory">
+                    <i class="fas fa-trash"></i> 清空历史
+                </button>
+            </div>
+        </main>
+
+        <div class="qr-modal" id="qrModal">
+            <div class="qr-content">
+                <span class="qr-close" id="qrClose">&times;</span>
+                <h3>密码二维码</h3>
+                <div id="qrCodeContainer"></div>
+                <p class="qr-warning">⚠️ 请注意保护二维码安全</p>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>&copy; 2025 密码生成器. 您的密码安全由您掌控.</p>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode/1.5.3/qrcode.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
